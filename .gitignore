@@ -27,3 +27,8 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+# ignore generated json
+json/*.json
+
+#have error json
+!json/error.json

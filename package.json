@@ -12,8 +12,12 @@
     "express": "~4.10.6",
     "googleapis": "^1.0.22",
     "jade": "~1.8.2",
+    "jquery": "1.8.3",
+    "moment": "^2.8.4",
     "morgan": "~1.5.1",
+    "request": "^2.51.0",
     "serve-favicon": "~2.2.0",
-    "stylus": "0.42.3"
+    "stylus": "0.42.3",
+    "tonic": "0.0.3"
   }
 }
