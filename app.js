@@ -40,10 +40,12 @@ app.get('/v1/:endpoint', function(req, res){
     fs.exists(path, function(exists) {
       if (exists) {
         //get file from json directory
-        res.sendfile('./json/' + file + '.json');
+        res.sendfile('./json/' + file + '.json', {"root": __dirname});
       } else {
-        res.status(404).sendFile('./json/error.json');
+        res.status(404);
+        res.sendFile('./json/error.json', {"root": __dirname});
       }
+      
     });
   });
 

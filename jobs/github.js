@@ -1,5 +1,6 @@
 // Get github contributions every 5 min
 // We don't use the GitHub api here because there's no contributions API
+
 job('contributions', function(done) {
 
 	//request for simple http calls
@@ -19,10 +20,11 @@ job('contributions', function(done) {
         var contributions = $(html).find('.contrib-number:first').text().replace(/^[^\d]*/,"").replace(/[^\d]*$/,"");
 	 	//convert to number
 	 	contributions = parseInt(contributions);
+	 	//add to array
 	 	jsonData['contributions'] = contributions;
-	 	save.file('github-contributions', jsonData);
+	 	save.file('contributions', jsonData);
 	 	console.log('GitHub contributions updated.');
 	  }
 	});
 
-}).every('8h');
+}).every('12h');
