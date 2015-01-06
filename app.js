@@ -10,7 +10,6 @@ var Tonic = require('tonic');
 var tonic = new Tonic();
 var fs = require('fs');
 
-
 //start tonic task engine
 tonic.jobs('jobs');
 tonic.start();
@@ -40,16 +39,15 @@ app.get('/v1/:endpoint', function(req, res){
     fs.exists(path, function(exists) {
       if (exists) {
         //get file from json directory
-        res.sendfile('./json/' + file + '.json', {"root": __dirname});
+        res.sendFile(path, {"root": __dirname});
       } else {
-        res.status(404);
-        res.sendFile('./json/error.json', {"root": __dirname});
+        res.status(404).sendFile('./json/error.json', {"root": __dirname});
       }
       
     });
   });
 
-app.use('/', routes);
+// app.use('/', routes);
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -81,6 +79,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

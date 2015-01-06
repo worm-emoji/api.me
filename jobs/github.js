@@ -8,7 +8,7 @@ job('contributions', function(done) {
 	//jQuery to scrape DOM
 	$ = require('jquery');
 	//save.js to save json
-	save = require('../save.js')
+	save = require('../save.js');
 
 	// set up array
 	jsonData = new Object;

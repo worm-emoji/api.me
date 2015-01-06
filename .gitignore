@@ -32,3 +32,5 @@ json/*.json
 
 #have error json
 !json/error.json
+
+config.js
