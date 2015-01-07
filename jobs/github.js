@@ -9,12 +9,14 @@ job('contributions', function(done) {
 	$ = require('jquery');
 	//save.js to save json
 	save = require('../save.js');
+	//get username from config file
+	var config = require('../config.js');
 
 	// set up array
 	jsonData = new Object;
 
 	//request gets my github profile
-	request('https://github.com/lukemiles/', function (error, response, html) {
+	request('https://github.com/'+ config.github.username + '/', function (error, response, html) {
 	  if (!error && response.statusCode == 200) {
 	  	//Use jQuery to scrape html
         var contributions = $(html).find('.contrib-number:first').text().replace(/^[^\d]*/,"").replace(/[^\d]*$/,"");
