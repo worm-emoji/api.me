@@ -15,3 +15,10 @@ github = new Object;
 github.username = "lukemiles";
 //export data
 exports.github = github;
+
+//last.fm data
+lastfm = new Object;
+lastfm.key = "";
+lastfm.secret = "";
+lastfm.username = "notlukemiles";
+exports.lastfm = lastfm;

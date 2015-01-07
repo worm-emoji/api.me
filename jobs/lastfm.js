@@ -112,7 +112,7 @@ job('music-recent', function(done) {
 
 		}
 	});
-}).every('1m');
+}).every('90s');
 
 job('music-combine', function(done, musicRecent) {
 
