@@ -33,7 +33,7 @@ app.use('/', routes);
 function serveJSON(path, res) {
     // allow any script to fetch response
     res.setHeader("Access-Control-Allow-Origin", "*");
-    
+
     //serve up file only if it exists
     fs.exists(path, function(exists) {
       if (exists) {
@@ -66,8 +66,6 @@ app.get('/v1/music/:endpoint', function(req, res){
     serveJSON(path, res);
 
   });
-
-// app.use('/', routes);
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

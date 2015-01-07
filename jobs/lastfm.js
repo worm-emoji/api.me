@@ -34,7 +34,8 @@ job('music-weekly', function(done) {
 	            weeklySongs.plays = 0;
 	            //initialize top artist variable
 	            weeklySongs.topArtist = new Object;
-
+	            // add number of unique artists to object
+	            weeklySongs.uniqueArtists = artistkeys.length;
 	            // iterate through keys
 	             for( var i = 0, length = artistkeys.length; i < length; i++ ) {
 	             	//we have to do parseInt() because the JSON has the number as a string
@@ -76,7 +77,6 @@ job('music-recent', function(done) {
 	            //iterate through artist data...
 	            //get list of keys
 	            var keys = Object.keys(data);
-
 	            // iterate through keys
 	             for(var i = 0, length = keys.length; i < length; i++) {
 	             	//create temport object for song 
@@ -88,7 +88,7 @@ job('music-recent', function(done) {
 	                song.artist = lastSong.artist["#text"];
 	                song.name = lastSong.name;
 	                song.album = lastSong.album["#text"];
-	                song.image = lastSong.image[0]["#text"];
+	                song.image = lastSong.image[lastSong.image.length - 1]["#text"];
 
 	                // cannot figure out why this line creates the error
 	                // [TypeError: Cannot read property '#time' of undefined]
@@ -115,19 +115,27 @@ job('music-recent', function(done) {
 }).every('90s');
 
 job('music-combine', function(done, musicRecent) {
+	// only combine file if music-weekly exists
+	path = "json/music-weekly.json";
 
-	// synchronously open the weekly file
-	var musicWeekly = JSON.parse(fs.readFileSync('json/music-weekly.json').toString());
-	// create new object to dump data in
-	var music = new Object;
+	fs.exists(path, function(exists) {
+		  if (exists) {
+		  	// synchronously open the weekly file
+		  	var musicWeekly = JSON.parse(fs.readFileSync(path).toString());
+		  	// create new object to dump data in
+		  	var music = new Object;
 
-	// merge files into one object
-	music.recent = musicRecent.songs;
-	music.weeklyPlays = musicWeekly.plays;
-	music.weeklyTopArtist = musicWeekly.topArtist;
+		  	// merge files into one object
+		  	music.recent = musicRecent.songs;
+		  	music.weeklyPlays = musicWeekly.plays;
+		  	music.weeklyTopArtist = musicWeekly.topArtist;
+		  	music.weeklyUniqueArtists = musicWeekly.uniqueArtists;
 
-	// save to music.json
-	console.log('music.json updated');
-	save.file("music", music);
+
+		  	// save to music.json
+		  	console.log('music.json updated');
+		  	save.file("music", music);
+		  }
+	  });
 
 }).after('music-recent');
