@@ -8,12 +8,14 @@ job('contributions', function(done) {
 	//jQuery to scrape DOM
 	$ = require('jquery');
 	//save.js to save json
-	save = require('../save.js');
+	var save = require('../save.js');
 	//get username from config file
 	var config = require('../config.js');
 
 	// set up array
 	jsonData = new Object;
+	//specify interval (in days) of data
+	jsonData.interval = 365;
 
 	//request gets my github profile
 	request('https://github.com/'+ config.github.username + '/', function (error, response, html) {

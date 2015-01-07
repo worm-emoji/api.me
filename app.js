@@ -26,15 +26,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', routes);
 
-// serve up API
-
-app.get('/v1/:endpoint', function(req, res){
-
-    file = req.params.endpoint;
-    path = "json/" + file + ".json";
-
+// function to serve json if it exists
+// based on supplied path
+function serveJSON(path, res) {
+    // allow any script to fetch response
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    
     //serve up file only if it exists
     fs.exists(path, function(exists) {
       if (exists) {
@@ -45,6 +44,27 @@ app.get('/v1/:endpoint', function(req, res){
       }
       
     });
+}
+
+
+// serve up API
+
+app.get('/v1/:endpoint/', function(req, res){
+
+    file = req.params.endpoint;
+    path = "json/" + file + ".json";
+    serveJSON(path,res);
+
+ });
+
+// add music endpoints
+
+app.get('/v1/music/:endpoint', function(req, res){
+
+    file = req.params.endpoint;
+    path = "json/music-" + file + ".json";
+    serveJSON(path, res);
+
   });
 
 // app.use('/', routes);

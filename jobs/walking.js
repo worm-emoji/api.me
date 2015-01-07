@@ -4,7 +4,7 @@ job('walking', function(done) {
 	//get fitbit api client
 	Fitbit = require('fitbit');
 	//save.js to save json
-	save = require('../save.js')
+	var save = require('../save.js')
 
 	//populate client with all keys
 	client = new Fitbit(
@@ -25,14 +25,16 @@ job('walking', function(done) {
 	  }
 
 	  // set up array
-	  jsonData = new Object;
-	  jsonData.steps = activities.steps();
+	  fitnessData = new Object;
+	  fitnessData.steps = activities.steps();
+	  //add interval of data
+	  fitnessData.interval = 1;
 	  //get current distance for today
-	  jsonData.distance = activities._attributes.summary.distances[0].distance;
+	  fitnessData.distance = activities._attributes.summary.distances[0].distance;
 	  //add unit system
-	  jsonData.units = config.fitbit.units;
+	  fitnessData.units = config.fitbit.units;
 	  //save json
-	  save.file('walking', jsonData);
+	  save.file('walking', fitnessData);
 	  console.log('Walking data updated.');
 
 });
