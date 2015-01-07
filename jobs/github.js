@@ -23,7 +23,7 @@ job('contributions', function(done) {
 	 	//convert to number
 	 	contributions = parseInt(contributions);
 	 	//add to array
-	 	jsonData['contributions'] = contributions;
+	 	jsonData.contributions = contributions;
 	 	save.file('contributions', jsonData);
 	 	console.log('GitHub contributions updated.');
 	  }

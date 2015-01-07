@@ -8,12 +8,12 @@ job('walking', function(done) {
 
 	//populate client with all keys
 	client = new Fitbit(
-	    config.fitbit['client_key']
-	  , config.fitbit['client_secret']
+	    config.fitbit.client_key
+	  , config.fitbit.client_secret
 	  , { 
-	        accessToken: config.fitbit['access_token']
-	      , accessTokenSecret: config.fitbit['access_secret']
-	      , unitMeasure: config.fitbit['units']
+	        accessToken: config.fitbit.access_token
+	      , accessTokenSecret: config.fitbit.access_secret
+	      , unitMeasure: config.fitbit.units
 	    }
 	);
 
@@ -26,11 +26,11 @@ job('walking', function(done) {
 
 	  // set up array
 	  jsonData = new Object;
-	  jsonData['steps'] = activities.steps();
+	  jsonData.steps = activities.steps();
 	  //get current distance for today
-	  jsonData['distance'] = activities['_attributes']['summary']['distances'][0]['distance'];
+	  jsonData.distance = activities._attributes.summary.distances[0].distance;
 	  //add unit system
-	  jsonData['units'] = config.fitbit['units'];
+	  jsonData.units = config.fitbit.units;
 	  //save json
 	  save.file('walking', jsonData);
 	  console.log('Walking data updated.');

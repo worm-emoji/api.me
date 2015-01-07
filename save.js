@@ -6,9 +6,9 @@ var moment = require('moment');
 exports.file = function (filename, data) {
 
 	//add 200 status code
-	data['status'] = 200;
+	data.status = 200;
 
-	data['lastUpdated'] = moment().format("dddd, MMMM Do YYYY, h:mm:ss a Z");
+	data.lastUpdated = moment().format("dddd, MMMM Do YYYY, h:mm:ss a Z");
 
 	//convert object to json
 	json = JSON.stringify(data);
