@@ -34,3 +34,4 @@ json/*.json
 !json/error.json
 
 config.js
+data_cache.json
