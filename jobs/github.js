@@ -72,10 +72,10 @@ job('lastCommit', function(done, contributions) {
 
 	  	 		// save everything
 
-	  	 		save.file('github-last', lastPush);
-	  	 		console.log('Last github commit updated.');
 	  	 		save.file('github', github);
 	  	 		console.log('github.json updated');
+	  	 		save.file('github-last', lastPush);
+	  	 		console.log('Last github commit updated.');
 
 
 	  	 		break;
