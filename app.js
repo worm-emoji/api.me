@@ -59,10 +59,10 @@ app.get('/v1/:endpoint/', function(req, res){
 
 // add music endpoints
 
-app.get('/v1/music/:endpoint', function(req, res){
+app.get('/v1/:category/:endpoint', function(req, res){
 
     file = req.params.endpoint;
-    path = "json/music-" + file + ".json";
+    path = "json/" + req.params.category + "-" + file + ".json";
     serveJSON(path, res);
 
   });
