@@ -59,7 +59,7 @@ job('lastCommit', function(done, contributions) {
 	  	 		lastPush = new Object;
 	  	 		lastPush.repo_url = "https://github.com/" + currentEvent.repo.name;
 	  	 		lastPush.commit_url = lastPush.repo_url + "/commit/" + currentEvent.payload.head;
-	  	 		lastPush.commit_message = currentEvent.payload.commits[0].message;
+	  	 		lastPush.commit_message = currentEvent.payload.commits[currentEvent.payload.commits.length -1].message;
 	  	 		lastPush.time = currentEvent.created_at;
 	  	 		lastPush.repo_name =  currentEvent.repo.name;
 	
