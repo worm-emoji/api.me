@@ -35,3 +35,5 @@ json/*.json
 
 config.js
 data_cache.json
+# sleep data
+json/sleep.csv
