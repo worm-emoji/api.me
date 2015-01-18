@@ -9,6 +9,8 @@ var app = express();
 var Tonic = require('tonic');
 var tonic = new Tonic();
 var fs = require('fs');
+//add timestamps in front of log messages
+require('console-stamp')(console, '[HH:MM:ss]');
 
 //start tonic task engine
 tonic.jobs('jobs');
