@@ -39,4 +39,4 @@ job('walking', function(done) {
 
 });
 
-}).every('15m');
+}).every('5m');

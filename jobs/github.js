@@ -33,7 +33,7 @@ job('contributions', function(done) {
 	  }
 	});
 
-}).every('10m');
+}).every('5m');
 
 job('lastCommit', function(done, contributions) {
 
