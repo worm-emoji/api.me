@@ -8,13 +8,13 @@ job('walking', function(done) {
 
 	//populate client with all keys
 	client = new Fitbit(
-	    config.fitbit.client_key
-	  , config.fitbit.client_secret
-	  , { 
-	        accessToken: config.fitbit.access_token
-	      , accessTokenSecret: config.fitbit.access_secret
-	      , unitMeasure: config.fitbit.units
-	    }
+	  config.fitbit.client_key,
+	  config.fitbit.client_secret,
+	  { 
+	      accessToken: config.fitbit.access_token,
+	      accessTokenSecret: config.fitbit.access_secret,
+	      unitMeasure: config.fitbit.units
+	  }
 	);
 
 	// Fetch activities so far today
