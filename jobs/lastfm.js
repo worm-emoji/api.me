@@ -89,6 +89,10 @@ job('music-recent', function(done) {
 	                song.name = lastSong.name;
 	                song.album = lastSong.album["#text"];
 	                song.image = lastSong.image[lastSong.image.length - 1]["#text"];
+	                song.url = lastSong.url;
+	                // convert spaces to plusses and construct URL
+	                song.artistUrl = "http://www.last.fm/music/" + lastSong.artist["#text"].replace(/\s+/g, '+');
+
 
 	                // cannot figure out why this line creates the error
 	                // [TypeError: Cannot read property '#time' of undefined]
