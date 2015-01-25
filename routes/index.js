@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/v1/', function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
 	// calculate age with moment
 	age = moment().diff(config.me.birthDate, 'years', true);
 	// delete birthdate from array
