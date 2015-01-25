@@ -59,6 +59,10 @@ app.get('/v1/:endpoint/', function(req, res){
 
  });
 
+app.get('/v1/', function(req, res) {
+    res.json({status:200});
+});
+
 // add music endpoints
 
 app.get('/v1/:category/:endpoint', function(req, res){
