@@ -42,7 +42,7 @@ function serveJSON(path, res) {
         //get file from json directory
         res.sendFile(path, {"root": __dirname});
       } else {
-        res.status(404).sendFile('./json/error.json', {"root": __dirname});
+        res.status(404).json({status: 404, error:"Resource not found"});
       }
       
     });

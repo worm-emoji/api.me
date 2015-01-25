@@ -30,8 +30,5 @@ node_modules
 # ignore generated json
 json/*.json
 
-#have error json
-!json/error.json
-
 config.js
 data_cache.json
