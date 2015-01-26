@@ -70,7 +70,7 @@ job('music-recent', function(done) {
 		    	//create object to later save
 	        	var recentSongs = new Object;
 	        	// create object of just songs
-	        	recentSongs.songs = new Object;
+	        	recentSongs.songs = [];
 	        	recentSongs.interval = 1;
 	        	//eliminate unneeded data
 	        	data = data.recenttracks.track;

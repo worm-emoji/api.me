@@ -61,8 +61,8 @@ job('sleep', function(done) {
             var sleepKeys = Object.keys(sleep);
             // create object for days recent sleep data
             var recentSleep = new Object;
-            // object for days
-            recentSleep.days = {};
+            // array for days
+            recentSleep.days = [];
             // create variable for total time
             recentSleep.total = 0;
             recentSleep.countedDays = 0;
