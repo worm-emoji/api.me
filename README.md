@@ -10,7 +10,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 [`/v1/`](https://api.lukemil.es/v1/): This is the index. Returns basic information about me such as age. Also lists all other endpoints.
 
 **Example response**
-```
+``` JSON
 {
   "status": 200,
   "name": "Luke Miles",
@@ -39,7 +39,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 [`/v1/github`](https://api.lukemil.es/v1/github/): Returns latest github commit and number of contributions. For just the latest commit, use [`/v1/github/latest`](https://api.lukemil.es/v1/github/latest), and for just the number of contributions, use [`/v1/github/contributions`](https://api.lukemil.es/v1/github/contributions).
 
 **Example response**
-```
+``` JSON
 {
   "lastPush": {
     "repo_url": "https:\/\/github.com\/lukemiles\/stolen-color",
@@ -58,7 +58,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 [`/v1/music`](https://api.lukemil.es/v1/music/): Returns latest music data from my [last.fm profile](http://last.fm/user/notlukemiles). Includes recent song plays and weekly stats. For just weekly song plays, use [`/v1/music/weekly`](https://api.lukemil.es/v1/music/weekly), and for just recent song data, use [`/v1/music/recent`](https://api.lukemil.es/v1/music/recent).
 
 **Example response**
-```
+``` JSON
 {
   "recent": [
     {
@@ -94,7 +94,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 [`/v1/sleep`](https://api.lukemil.es/v1/sleep/): I track my sleep with the Android app [Sleep as Android](https://play.google.com/store/apps/details?id=com.urbandroid.sleep&hl=en) and use the [SleepCloud addon](https://play.google.com/store/apps/details?id=com.urbandroid.sleep.addon.port&hl=en) to sync my changes with Google Drive. This endpoint returns my daily sleep (including naps) for the past fourteen days. `time` is the UNIX timestamp of the beginning of the day (12:00:00 California time). 
 
 **Example response**
-```
+``` JSON
 {
   "days": [
     {
@@ -122,7 +122,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 [`/v1/walking`](https://api.lukemil.es/v1/walking/): I own a [Fitbit Zip](http://www.amazon.com/dp/B0095PZHZE/) and use it to track my daily steps. This endpoint provides recent walking data as retrieved from Fitbit's API.
 
 **Example response**
-```
+``` JSON
 {
   "steps": 1041,
   "interval": 1,
