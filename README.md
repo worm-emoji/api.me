@@ -36,7 +36,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 ```
 
 ## GitHub 
-[`/v1/github`](https://api.lukemil.es/v1/github/): Returns latest github commit and number of contributions. For just the latest commit, use [`/v1/github/latest`](https://api.lukemil.es/v1/github/latest), and for just the number of contributions, use [`/v1/github/contributions`](https://api.lukemil.es/v1/github/contributions).
+[`/v1/github`](https://api.lukemil.es/v1/github/): Returns latest github commit and number of contributions. For just the latest commit, use [`/v1/github/last`](https://api.lukemil.es/v1/github/last), and for just the number of contributions, use [`/v1/github/contributions`](https://api.lukemil.es/v1/github/contributions).
 
 **Example response**
 ``` JSON
