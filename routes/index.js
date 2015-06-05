@@ -13,11 +13,16 @@ router.get('/v1/', function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
 	// calculate age with moment
 	age = moment().diff(config.me.birthDate, 'years', true);
-	// delete birthdate from array
+    if (moment().format("MMDD") == moment(config.me.birthDate).format("MMDD")) {
+        birthday = true;
+    } else {
+        birthday = false;
+    }
     res.json({
     	status: 200,
         name: config.me.name,
         age: age,
+        birthday: birthday,
         interests: config.me.interests,
         location: config.me.location,
         endpoints: ['/v1/github', '/v1/github/contributions', '/v1/github/last', '/v1/music', '/v1/music/recent', '/v1/music/weekly', '/v1/sleep', '/v1/walking']
