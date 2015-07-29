@@ -30,6 +30,10 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
+// global route list
+apiVersion = 'v1';
+routeList = [];
+
 // function to serve json if it exists
 // based on supplied path
 function serveJSON(path, res) {
@@ -51,7 +55,7 @@ function serveJSON(path, res) {
 
 // serve up API
 
-app.get('/v1/:endpoint/', function(req, res){
+app.get('/' + apiVersion + '/:endpoint/', function(req, res){
 
     file = req.params.endpoint;
     path = "json/" + file + ".json";
@@ -62,7 +66,7 @@ app.get('/v1/:endpoint/', function(req, res){
 
 // add music endpoints
 
-app.get('/v1/:category/:endpoint', function(req, res){
+app.get('/' + apiVersion + '/:category/:endpoint', function(req, res){
 
     file = req.params.endpoint;
     path = "json/" + req.params.category + "-" + file + ".json";

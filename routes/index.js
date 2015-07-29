@@ -25,7 +25,7 @@ router.get('/v1/', function(req, res) {
         birthday: birthday,
         interests: config.me.interests,
         location: config.me.location,
-        endpoints: ['/v1/github', '/v1/github/contributions', '/v1/github/last', '/v1/music', '/v1/music/recent', '/v1/music/weekly', '/v1/sleep', '/v1/walking']
+        endpoints: routeList
     });
 });
 

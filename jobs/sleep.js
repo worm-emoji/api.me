@@ -11,6 +11,8 @@ var moment = require('moment');
 var config = require('../config.js');
 var request = require('request');
 
+if (!config.google) return;
+
 job('sleep', function(done) {
 
     var oauth2Client = new OAuth2(config.google.client_id, config.google.client_secret);

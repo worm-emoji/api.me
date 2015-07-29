@@ -8,6 +8,8 @@ var save = require('../save.js');
 //get username from config file
 var config = require('../config.js');
 
+if (!config.github) return;
+
 job('contributions', function(done) {
 
 	//jQuery to scrape DOM
