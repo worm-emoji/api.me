@@ -32,3 +32,6 @@ json/*.json
 
 config.js
 data_cache.json
+
+# WebStorm
+.idea
