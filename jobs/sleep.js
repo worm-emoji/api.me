@@ -37,7 +37,7 @@ job('sleep', function(done) {
                 var options = {
                     url: response.downloadUrl,
                     headers: {
-                        'User-Agent': 'api.lukemil.es',
+                        'User-Agent': 'api.me',
                         'Authorization': 'Bearer ' + tokens.access_token
                     }
                 };

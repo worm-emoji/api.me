@@ -1,13 +1,13 @@
-api.lukemil.es
+api.me
 ===============
 
-This API aggregates data about me into a single source. Data is refreshed constantly and cached, which provides real-time data with low latency. A live example where this real-time data is used can be found [on my website](https://lukemil.es/is/).
+This API aggregates data about *you* into a single source. Data is refreshed constantly and cached, which provides real-time data with low latency. A live example where this real-time data is used can be found [on Luke Miles' website](https://lukemil.es/is/).
 
 ## Endpoints
 
 ### Index
 
-[`/v1/`](https://api.lukemil.es/v1/): This is the index. Returns basic information about me such as age. Also lists all other endpoints.
+[`/v1/`](https://api.lukemil.es/v1/): This is the index. Returns basic information about e such as age. Also lists all other endpoints.
 
 **Example response**
 ``` JSON
@@ -91,7 +91,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 
 ## Sleep
 
-[`/v1/sleep`](https://api.lukemil.es/v1/sleep/): I track my sleep with the Android app [Sleep as Android](https://play.google.com/store/apps/details?id=com.urbandroid.sleep&hl=en) and use the [SleepCloud addon](https://play.google.com/store/apps/details?id=com.urbandroid.sleep.addon.port&hl=en) to sync my changes with Google Drive. This endpoint returns my daily sleep (including naps) for the past fourteen days. `time` is the UNIX timestamp of the beginning of the day (12:00:00 California time). 
+[`/v1/sleep`](https://api.lukemil.es/v1/sleep/): You can track my sleep with the Android app [Sleep as Android](https://play.google.com/store/apps/details?id=com.urbandroid.sleep&hl=en) and use the [SleepCloud addon](https://play.google.com/store/apps/details?id=com.urbandroid.sleep.addon.port&hl=en) to sync my changes with Google Drive. This endpoint returns my daily sleep (including naps) for the past fourteen days. `time` is the UNIX timestamp of the beginning of the day (12:00:00 California time). 
 
 **Example response**
 ``` JSON
@@ -119,7 +119,7 @@ This API aggregates data about me into a single source. Data is refreshed consta
 
 ## Walking
 
-[`/v1/walking`](https://api.lukemil.es/v1/walking/): I own a [Fitbit Zip](http://www.amazon.com/dp/B0095PZHZE/) and use it to track my daily steps. This endpoint provides recent walking data as retrieved from Fitbit's API.
+[`/v1/walking`](https://api.lukemil.es/v1/walking/): This endpoint provides recent walking data as retrieved from Fitbit's API.
 
 **Example response**
 ``` JSON

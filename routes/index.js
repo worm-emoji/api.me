@@ -6,7 +6,7 @@ var moment = require('moment');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'api.lukemil.es' });
+  res.render('index', { title: 'api.me' });
 });
 
 router.get('/v1/', function(req, res) {

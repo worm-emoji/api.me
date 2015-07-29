@@ -11,7 +11,7 @@ var fs = require('fs');
 var lastfm = new LastFmNode({
   api_key: config.lastfm.key,    // sign-up for a key at http://www.last.fm/api
   secret: config.lastfm.secret,
-  useragent: 'api.lukemil.es' // optional. defaults to lastfm-node.
+  useragent: 'api.me' // optional. defaults to lastfm-node.
 });
 
 // This job returns weekly last.fm play data. 
