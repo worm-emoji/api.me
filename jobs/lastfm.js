@@ -73,6 +73,7 @@ job('music-recent', function(done) {
 	        	recentSongs.songs = [];
 	        	recentSongs.interval = 1;
 	        	//eliminate unneeded data
+	        	recentSongs.nowPlaying = (data.recenttracks.track[0]["@attr"]) ? true : false;
 	        	data = data.recenttracks.track;
 	            //iterate through artist data...
 	            //get list of keys
@@ -130,6 +131,7 @@ job('music-combine', function(done, musicRecent) {
 		  	var music = new Object;
 
 		  	// merge files into one object
+		  	music.nowPlaying = musicRecent.nowPlaying;
 		  	music.recent = musicRecent.songs;
 		  	music.weeklyPlays = musicWeekly.plays;
 		  	music.weeklyTopArtist = musicWeekly.topArtist;
