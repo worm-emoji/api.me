@@ -9,11 +9,15 @@ var save = require('../save.js');
 var config = require('../config.js');
 
 if (!config.github) return;
+if (!config.api) {
+	config.api = [];
+	config.api.name = "api.me";
+}
 
 job('contributions', function(done) {
 
 	//jQuery to scrape DOM
-	$ = require('jquery');
+	var env = require('jsdom').env;
 
 	// set up array
 	jsonData = new Object;
@@ -23,15 +27,21 @@ job('contributions', function(done) {
 	//request gets my github profile
 	request('https://github.com/'+ config.github.username + '/', function (error, response, html) {
 	  if (!error && response.statusCode == 200) {
-	  	//Use jQuery to scrape html
-        var contributions = $(html).find('.contrib-number:first').text().replace(/^[^\d]*/,"").replace(/[^\d]*$/,"");
-	 	//convert to number
-	 	contributions = parseInt(contributions);
-	 	//add to array
-	 	jsonData.contributions = contributions;
-	 	save.file('github-contributions', jsonData);
-	 	console.log('GitHub contributions updated.');
-	 	done(jsonData);
+	  	//Use jQuery to parse html
+	  	var env = require('jsdom').env
+	  	    , html;
+
+	  	env(html, function (errors, window) {
+	  	  var $ = require('jquery')(window);
+	  	  var contributions = $(html).find('.contrib-number:first').text().replace(/^[^\d]*/,"").replace(/[^\d]*$/,"");
+	  	  //convert to number
+	  	  contributions = parseInt(contributions);
+	  	  //add to array
+	  	  jsonData.contributions = contributions;
+	  	  save.file('github-contributions', jsonData);
+	  	  console.log('GitHub contributions updated.');
+	  	  done(jsonData);
+	  	});
 	  }
 	});
 
@@ -43,7 +53,7 @@ job('lastCommit', function(done, contributions) {
 	var options = {
 	    url: 'https://api.github.com/users/' + config.github.username +'/events',
 	    headers: {
-	        'User-Agent': 'api.me',
+	        'User-Agent': config.api.name,
 	        'Accept': 'Accept: application/vnd.github.v3+json'
 	    }
 	};
