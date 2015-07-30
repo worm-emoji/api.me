@@ -1,10 +1,13 @@
+//get api keys from config file
+var config = require('../config.js');
+//get fitbit api client
+Fitbit = require('fitbit');
+//save.js to save json
+var save = require('../save.js');
+
+if (!config.fitbit) return;
+
 job('walking', function(done) {
-	//get api keys from config file
-	var config = require('../config.js');
-	//get fitbit api client
-	Fitbit = require('fitbit');
-	//save.js to save json
-	var save = require('../save.js')
 
 	//populate client with all keys
 	client = new Fitbit(

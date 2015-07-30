@@ -13,6 +13,12 @@ exports.file = function (filename, data) {
 	//convert object to json
 	json = JSON.stringify(data);
 
+  var filenameFormatted = '/' + apiVersion + '/' + filename.replace('-','/');
+  if(typeof routeList[filenameFormatted] === 'undefined') {
+    routeList.push(filenameFormatted);
+    routeList.sort();
+  }
+
 	fs.writeFile("json/" + filename + '.json', json, function(err) {
 	    if(err) {
 	        console.log(err);
