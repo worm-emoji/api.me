@@ -53,7 +53,7 @@ job('lastCommit', function(done, contributions) {
 	var options = {
 	    url: 'https://api.github.com/users/' + config.github.username +'/events',
 	    headers: {
-	        'User-Agent': config.api.name,
+	        'User-Agent': "api.me",
 	        'Accept': 'Accept: application/vnd.github.v3+json'
 	    }
 	};
