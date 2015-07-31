@@ -23,6 +23,7 @@
     "request": "^2.51.0",
     "serve-favicon": "~2.2.0",
     "stylus": "0.42.3",
-    "tonic": "0.0.3"
+    "tonic": "0.0.3",
+    "untappd": "0.0.1"
   }
 }
