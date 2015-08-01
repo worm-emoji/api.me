@@ -52,3 +52,6 @@ social.hackernews = new Object;
 social.hackernews.id = "firloop";
 social.hackernews.recentItems = 10;
 exports.social = social;
+
+untappd = new Object;
+untappd.username = "";
