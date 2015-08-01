@@ -87,6 +87,7 @@ job('twitter', function(done) {
 	   	tweet.text = data[i].text;
 	   	tweet.favorite_count = data[i].favorite_count;
 	   	tweet.retweet_count = data[i].retweet_count;
+	   	tweet.time = data[i].created_at;
 
 	   	// URL is different for retweets
 	   	if (data[i].retweeted_status) {
