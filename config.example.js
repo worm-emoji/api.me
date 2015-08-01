@@ -46,3 +46,9 @@ google.client_secret = "";
 google.refresh_token = "";
 google.sleepFileId = "";
 exports.google = google;
+
+social = new Object;
+social.hackernews = new Object;
+social.hackernews.id = "firloop";
+social.hackernews.recentItems = 10;
+exports.social = social;
