@@ -14,7 +14,7 @@ exports.file = function (filename, data) {
 	json = JSON.stringify(data);
 
   var filenameFormatted = '/' + apiVersion + '/' + filename.replace('-','/');
-  if(typeof routeList[filenameFormatted] === 'undefined') {
+  if(routeList.indexOf(filenameFormatted) === -1) {
     routeList.push(filenameFormatted);
     routeList.sort();
   }
