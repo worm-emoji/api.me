@@ -60,3 +60,6 @@ social.twitter.access_token_secret = "";
 // no @ symbol here
 social.twitter.username = "2y4u_";
 exports.social = social;
+
+untappd = new Object;
+untappd.username = "";
