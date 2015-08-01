@@ -63,3 +63,7 @@ exports.social = social;
 
 untappd = new Object;
 untappd.username = "";
+
+steam = new Object;
+steam.apiKey = "";
+steam.steamID64 = "";

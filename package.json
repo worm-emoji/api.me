@@ -23,6 +23,7 @@
     "morgan": "~1.5.1",
     "request": "^2.51.0",
     "serve-favicon": "~2.2.0",
+    "steam-web": "^0.2.4",
     "stylus": "0.42.3",
     "tonic": "0.0.3",
     "twitter": "^1.2.5",
