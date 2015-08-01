@@ -25,6 +25,7 @@
     "serve-favicon": "~2.2.0",
     "stylus": "0.42.3",
     "tonic": "0.0.3",
+    "twitter": "^1.2.5",
     "untappd": "0.0.1"
   }
 }

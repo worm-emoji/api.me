@@ -51,4 +51,12 @@ social = new Object;
 social.hackernews = new Object;
 social.hackernews.id = "firloop";
 social.hackernews.recentItems = 10;
+
+social.twitter = new Object;
+social.twitter.consumer_key = "";
+social.twitter.consumer_secret = "";
+social.twitter.access_token_key = "";
+social.twitter.access_token_secret = "";
+// no @ symbol here
+social.twitter.username = "2y4u_";
 exports.social = social;

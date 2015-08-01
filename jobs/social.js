@@ -6,10 +6,12 @@ var save = require('../save.js');
 var request = require('request');
 // async to make batch HTTP easy
 var async = require('async');
+// twitter for ... twitter
+var Twitter = require('twitter');
 
 if (!config.social) return;
 
-job('social', function(done) {
+job('hn', function(done) {
 	social = new Object;
 
 	if (config.social.hackernews.id) {
@@ -36,10 +38,14 @@ job('social', function(done) {
 					delete data.by;
 					delete data.kids;
 
-					// add item url 
-					data.url = "http://news.ycombinator.com/item?id=" + task.item;
-					social.hn.recent[task.order] = data;
-					done();
+					if (data.deleted) {
+						done();
+					} else {
+						// add item url 
+						data.url = "http://news.ycombinator.com/item?id=" + task.item;
+						social.hn.recent[task.order] = data;
+						done();
+					}
 				});
 			}, items);
 
@@ -51,7 +57,7 @@ job('social', function(done) {
 			// when all are finished, save json
 
 			queue.drain = function() {
-				save.file("social", social);
+				save.file("hn", social);
 				console.log("Hacker News data updated.");
 			}
 
@@ -59,3 +65,47 @@ job('social', function(done) {
 		});
 	}
 }).every('1h');
+
+job('twitter', function(done) {
+	if(!config.social.twitter) return;
+	var client = new Twitter({
+	  consumer_key: config.social.twitter.consumer_key,
+	  consumer_secret: config.social.twitter.consumer_secret,
+	  access_token_key: config.social.twitter.access_token_key,
+	  access_token_secret: config.social.twitter.access_token_secret
+	});
+	 
+	client.get('statuses/user_timeline', function(error, data, response){
+	  if (!error) {
+	   tweets = new Object;
+	   tweets.username = config.social.twitter.username;
+	   tweets.url = "https://twitter.com/" + tweets.username;
+	   tweets.recent = [];
+
+	   for (var i = 0; i < data.length; i++) {
+	   	tweet = new Object;
+	   	tweet.text = data[i].text;
+	   	tweet.favorite_count = data[i].favorite_count;
+	   	tweet.retweet_count = data[i].retweet_count;
+
+	   	// URL is different for retweets
+	   	if (data[i].retweeted_status) {
+	   		tweet.is_retweet = true;
+	   		// find original user to create url
+	   		user = data[i].retweeted_status.user.screen_name;
+	   	} else {
+	   		tweet.is_retweet = false
+	   		user = tweets.username;
+	   	}
+
+	   	tweet.url = "https://twitter.com/" + user + "/status/" + data[i].id_str;
+
+	   	tweets.recent[i] = tweet;
+	   };
+
+	   save.file("twitter", tweets);
+	   console.log("Twitter data updated.");
+	  }
+	});
+
+}).every("5m");
