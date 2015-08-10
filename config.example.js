@@ -67,3 +67,6 @@ untappd.username = "";
 steam = new Object;
 steam.apiKey = "";
 steam.steamID64 = "";
+
+jefit = new Object;
+jefit.userId = "";
