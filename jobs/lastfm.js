@@ -6,6 +6,9 @@ var config = require('../config.js');
 var save = require('../save.js');
 // fs to open json
 var fs = require('fs');
+//request for simple http calls
+var request = require('request');
+
 
 //initialize api client
 var lastfm = new LastFmNode({
@@ -105,6 +108,11 @@ job('music-recent', function(done) {
 	                recentSongs.songs[keys[i]] = song;
 
 	             }
+
+	             recentSongs.songs[0].title = lastTitle;
+	             recentSongs.songs[0].artist = lastArtist;
+
+	             // put to slack
 
 	             save.file("music-recent", recentSongs);
 	             console.log('Recent last.fm data updated.');

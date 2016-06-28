@@ -110,3 +110,17 @@ job('twitter', function(done) {
 	});
 
 }).every("5m");
+
+job("pinboard", function(done) {
+	request.get("https://api.pinboard.in/v1/posts/all", {
+		qs: {
+			auth_token: config.pinboard.auth_token,
+			format: "json",
+			tag: config.pinboard.tag
+		}
+	}, function(error, response, data) {
+		var pinboard = JSON.parse(data);
+		save.file("posts", pinboard);
+		console.log("Pinboard updated");
+	})
+}).every("5m");

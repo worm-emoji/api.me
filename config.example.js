@@ -70,3 +70,8 @@ steam.steamID64 = "";
 
 jefit = new Object;
 jefit.userId = "";
+
+pinboard = new Object;
+pinboard.auth_token = "lukemiles:null";
+pinboard.tag = "publish"
+exports.pinboard = pinboard;

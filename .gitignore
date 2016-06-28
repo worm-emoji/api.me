@@ -35,3 +35,7 @@ data_cache.json
 
 # WebStorm
 .idea
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
